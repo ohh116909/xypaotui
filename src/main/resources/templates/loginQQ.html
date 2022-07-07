@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>第三方登录QQ</title>
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+  <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+  <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .container{
+        margin-top: 3%;
+    }
+    .row{
+        text-align: center;
+    }
+    span{
+        font-size: 15px;
+        color: #999999;
+    }
+    #login1{
+        font-size: 16px;
+        color: #2D77E5;
+    }
+    #login1:hover{
+        border-bottom: 1px solid #2D77E5;
+        cursor:pointer;
+    }
+    .zh:hover{
+        cursor:pointer;
+    }
+</style>
+<body>
+    <div class="container" id="zh">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4"></div>
+            <div class="col-xs-4 col-sm-4">
+            <h3>账号密码登录</h3>
+            <span>
+                推荐使用<span id="login1">快速安全登录</span>，防止盗号。
+            </span>
+            </div>
+            <div class="col-xs-4 col-sm-4"></div>
+        </div>
+        <div class="row">
+            <br>
+            <div class="col-md-4"></div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <input type="text" class="form-control" placeholder="支持QQ号/邮箱/手机号登录"><br>
+                <input type="password" class="form-control" placeholder="密码"><br>
+                <input type="button" class="form-control" placeholder="密码" value="授权并登录" style="background-color: #5891e6; color: #fff;">
+            </div>
+        </div>
+      </div>
+    <div class="container" style="display: none;" id="sm">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4"></div>
+            <div class="col-xs-4 col-sm-4">
+            <h3>快速安全登录</h3>
+            <span>
+                请使用<span id="login1">qq手机版</span>扫描二维码 <br> 安全登录，防止盗号。
+            </span>
+            </div>
+            <div class="col-xs-4 col-sm-4"></div>
+        </div>
+        <div class="row">
+            <br>
+            <div class="col-md-4"></div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <img src="./images/二维码.jpg" alt="" style="width: 200px;height: 200px;">
+            </div>
+        </div>
+        <div class="row" >
+            <br>
+            <span class="zh">账号密码登录</span> | <span >新用户注册</span> | <span >意见反馈</span>
+        </div>
+      </div>
+</body>
+
+<script src="./js/jquery-3.6.0.js"></script>
+<script>
+    $('#login1').click(function(){
+        $('#zh').css('display','none');
+        $('#sm').css('display','block');
+    })
+    $('.zh').click(function(){
+        $('#zh').css('display','block');
+        $('#sm').css('display','none');
+    })
+</script>
+</body>
+
+</html>

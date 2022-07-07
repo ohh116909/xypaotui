@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生订单发布</title>
+    <link rel="stylesheet" href="/bootstrap-3.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/infomation.css">
+    <style>
+        font {
+            font-size: 15px;
+        }
+        .btn:hover, .btn:focus, .btn:active, .btn:visited {
+        outline: none;
+        box-shadow: none !important;
+        }
+    </style>
+</head>
+
+<body style="padding: 50px 0;height: 600px;">
+    <!-- 创建一个整体布局的div -->
+    <div class="container-fluid">
+        <!-- menuDIV -->
+        <div th:include="~{table/common::topnav}"></div>
+
+        <div class="row" style="height: 570px;">
+            <div id="daohang" class="col-xs-2 col-sm-2 col-md-2" style="padding: 0;">
+                <div class="btn-group-vertical" role="group" aria-label="..." style="float: right;">
+                    <button type="button" class="btn btn-default" _link="/shInformation/toShFor">代取服务</button>
+                    <button type="button" class="btn btn-default" _link="/shInformation/toShLost">失物招领</button>
+                    <button type="button" class="btn btn-default" _link="/shInformation/toShjob">大学兼职</button>
+                    <button type="button" class="btn btn-default"_link="/shInformation/toShIdle">闲置物品</button>
+                  </div>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10" style="padding: 0;">
+                <iframe id="main" src="/shInformation/toshFor" frameborder="0" scrolling="yes"></iframe>
+            </div>
+        </div>
+    <script src="/js/jquery-3.6.0.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<script>
+     $('#startNav ul li').click(function(){
+            $(this).toggleClass('active').siblings().removeClass('active')
+        })
+        $('#daohang button').click(function(){
+            var _link = $(this).attr("_link");
+            $('#main').attr('src', _link);
+        })
+    </script>
+</body>
+</html>

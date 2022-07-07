@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的兼职订单</title>
+  <link rel="stylesheet" href="/bootstrap-3.4.1-dist/css/bootstrap.css">
+  <style>
+    ul,
+    li {
+      list-style: none;
+    }
+    .container-fluid{
+      margin-top: 20px;
+     
+    }
+    .container-fluid p {
+      font-size: 20px;
+    }
+    .thumbnail{
+      background-color:#fff;
+    }
+    body{
+      background-color: #F5F6FF;
+    }
+  </style>
+</head>
+<body >
+  <div class="container-fluid">
+    <!-- 搜索栏 -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-3">
+        <p>我的订单</p>
+      </div>
+      <div class="col-xs-6 col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">搜索</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-2"></div>
+      <div class="col-xs-6 col-md-2">
+        <select class="form-control">
+          <option>全部</option>
+          <option>最近三天</option>
+          <option>最近一周</option>
+          <option>最近一个月</option>
+          <option>最近三个月</option>
+          <option>最近半年</option>
+        </select>
+      </div>
+    </div>
+    <!-- 物品展示 -->
+    <div class="row" style=" padding-top: 10px; padding-left: 0px;padding-right: 10px;">
+      
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <!-- <img src="./images/logo.png" alt="..."> -->
+            <div class="caption">
+              <h3>校内送餐</h3>
+              <li>工作时间:<span>2022.04.20——04.30</span></li>
+              <li>工作地点:<span>东二门</span></li>
+              <li>工作内容:<span>东二门取餐送餐</span></li>
+              <li>人员要求:<span>限男生</span></li>
+              <li>薪资福利:<span>100元/天</span></li>
+              <li>发布时间:<span>2022.04.20</span></li>
+              <li>状态:<span>已招满</span></li>
+             
+              <a href="#" class="btn btn-default" role="button">编辑</a> 
+              <a href="#" class="btn btn-danger" role="button" style="float: right;">删除</a>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <script src="/js/jquery-3.6.0.js"></script>
+  <script src="/bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的代取订单</title>
+  <link rel="stylesheet" href="/bootstrap-3.4.1-dist/css/bootstrap.css">
+  <style>
+    ul,
+    li {
+      list-style: none;
+    }
+    span{
+
+    }
+    .container-fluid{
+      margin-top: 20px;
+     
+    }
+    .container-fluid p {
+      font-size: 20px;
+    }
+    body{
+      background-color: #F5F6FF;
+    }
+  </style>
+</head>
+<body >
+  <div class="container-fluid">
+    <!-- 搜索栏 -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-3">
+        <p>我的订单</p>
+      </div>
+      <div class="col-xs-6 col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">搜索</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-2"></div>
+      <div class="col-xs-6 col-md-2">
+        <select class="form-control">
+          <option>全部</option>
+          <option>最近三天</option>
+          <option>最近一周</option>
+          <option>最近一个月</option>
+          <option>最近三个月</option>
+          <option>最近半年</option>
+        </select>
+      </div>
+    </div>
+    <!-- 物品展示 -->
+    <div id="caption" class="row" style=" padding-top: 10px; padding-left: 0px;padding-right: 10px; ">
+      
+
+
+            <!-- <img src="./images/logo.png" alt="..."> -->
+
+
+    </div>
+  </div>
+  <script src="/js/jquery-3.6.0.js"></script>
+  <script src="/bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+  <script>
+      $(document).ready(function (){
+        $.ajax({
+          url: '/view/getForAll',
+          method: 'post',
+          success: function (data){
+              $.each(data.result,function (index,value){
+                  addCaption(index,value);
+              })
+          }
+        })
+        function addCaption(index,val){
+          console.log(index)
+          console.log(val.forName)
+           var caption = $('#caption');
+           var options
+            for (var i = 0; i <= index; i++) {
+                options ='  <div  class="col-sm-6 col-md-3">'+
+                        '<div  class="thumbnail">'+
+                        ' <div class="caption">'+
+                        '   <h3>取快递</h3>\n' +
+                        '              <li>类型: <span>'+val.forName+'</span></li>\n' +
+                        '              <li>物品地点: <span>'+val.forGetAdress+'</span></li>\n' +
+                        '              <li>目的地: <span>'+val.forAdress+'</span></li>\n' +
+                        '              <li>发布时间: <span>'+timeFormatSeconds(val.forBeginTime)+'</span></li>\n' +
+                        '              <li>期望送达时间: <span>'+timeFormatSeconds(val.forOverTime)+'</span></li>\n' +
+                        '              <li>金额: <span>'+val.forMoney+'元</span></li>\n' +
+                        '              <li>状态: <span>未接单</span></li>'+
+                        ' <a href="#" class="btn btn-default" role="button">编辑</a>'+
+                        '<a href="#" class="btn btn-danger" role="button" style="float: right;">删除</a>'+
+                        ' </div>'+' </div>'+'</div>'
+
+            }
+            caption.append(options);
+        }
+      })
+      //获得年月日时分秒
+      //传入日期//例：2020-10-27T14:36:23
+      var timeFormatSeconds = function(time) {
+        var d = time ? new Date(time) : new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+        var hours = d.getHours();
+        var min = d.getMinutes();
+        var seconds = d.getSeconds();
+
+        if (month < 10) month = '0' + month;
+        if (day < 10) day = '0' + day;
+        if (hours < 0) hours = '0' + hours;
+        if (min < 10) min = '0' + min;
+        if (seconds < 10) seconds = '0' + seconds;
+
+        return (year + '-' + month + '-' + day + ' ' + hours + ':' + min + ':' + seconds);
+      }
+
+  </script>
+</body>
+
+</html>

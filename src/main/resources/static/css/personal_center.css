@@ -1,0 +1,19 @@
+.container{
+    margin-top: 60px;
+   
+    padding: 20px;
+}
+.container h4{
+    display: inline-block;
+}
+.container .btn{
+    margin-left: 76%;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #00b7ee;
+    color: #fff;
+}
+.container .btn:hover{
+    background-color: #07a6d6;
+}

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        body {
+            background-color: #F5F6FF;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .shade {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: black;
+            opacity: 0.6;
+            z-index: 100;
+        }
+
+        .add-model {
+            position: fixed;
+            height: 350px;
+            width: 370px;
+            top: 100px;
+            left: 54%;
+            z-index: 101;
+            /* border: 1px solid red; */
+            border-radius: 10px;
+            background: white;
+            margin-left: -200px;
+        }
+
+        #close {
+            float: right;
+            padding-top: 15px;
+            margin-left: -5px;
+        }
+
+        #close:hover {
+            cursor: pointer;
+        }
+
+        #ghtx {
+            width: 75px;
+            height: 75px;
+        }
+
+        .t_img {
+            width: 75px;
+            height: 75px;
+            border-radius: 100%;
+        }
+
+        #bc button {
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            border: 0;
+            background-color: #00b7ee;
+            color: #fff;
+        }
+
+        #bc button:hover {
+            background-color: #07a6d6;
+        }
+
+        .ft_img {
+            margin-left: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/personal_center.css">
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top ">
+            <div class="row">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" src="./images/logo.png" style="width: 100%;height: 100%;">
+                    </a>
+                    <a href="./index.html" class="navbar-brand ">首页</a>
+                    <a href="#startNav" data-toggle="collapse" class="navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                </div>
+                <!--第二部分:导航+按钮+超链接+文本-->
+                <div id="startNav" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="#" _link="./personalData.html">
+                                <font>校园圈子</font>
+                            </a>
+                        </li>
+                        <li><a href="./shInformation.html">
+                                <font>学生订单</font>
+                            </a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" style="margin-right: 50px;">
+                        <li><a href="./information.html">
+                                <font>发布订单</font>
+                            </a></li>
+                        <li><a href="./view.html">
+                                <font>我的订单</font>
+                            </a></li>
+                        <li class="active"><a href="./personalCenter.html">
+                                <font>个人中心</font>
+                            </a></li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="true">
+                                <img src="./images/login/qq.png" style="width: 18px;height: 18px;">
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="add_host">
+                                        <font>修改头像</font>
+                                    </a></li>
+                                <li><a href="./loginReset.html">
+                                        <font>修改密码</font>
+                                    </a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="./login.html">
+                                        <font>注销登录</font>
+                                    </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid" style="margin-top: 60px; ">
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <img src="./images/persona/头像.png" alt="">
+                <h4 style="display: inline-block;">我的信息</h4>
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>用户名</h5>
+                <input type="text" class="form-control" placeholder="测试">
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>年龄</h5>
+                <input type="number" class="form-control" placeholder="20">
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>性别</h5>
+                <select class="form-control col-xs-12 col-sm-6 col-md-8 ">
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>个人邮箱</h5>
+                <input type="email" class="form-control" placeholder="xxxxxxx@xxx.com">
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>个人介绍</h5>
+                <textarea class="form-control" rows="3" placeholder="这个人很懒什么都没留下"></textarea><br>
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-sm-4 col-md-4">
+                <button class="btn" type="submit" style="float: right;">确认修改</button>
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+    </div>
+
+    <div class="shade hide"></div>
+    <div class="add-model hide ">
+        <div class="row">
+            <div class="col-xs-2 col-sm-3 col-md-2"></div>
+            <div class="col-xs-8 col-sm-6 col-md-8">
+                <h4 style="text-align: center;">设置头像</h4>
+
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-2" style="width: 15.666667%;">
+                <img src="./images/叉叉.png" alt="" id="close">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4"></div>
+            <div class="col-xs-4 col-sm-4">
+                <div class="ft_img" id="ft_img">
+                    <img src="./images/login/qq.png" class="t_img" />
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4"></div>
+        </div>
+
+        <div id="t_img">
+            <img src="./images/picure/01.png" />
+            <img src="./images/picure/02.png" />
+            <img src="./images/picure/03.png" />
+            <img src="./images/picure/04.png" />
+            <img src="./images/picure/05.png" />
+            <img src="./images/picure/06.png" />
+            <img src="./images/picure/07.png" />
+        </div>
+        <hr>
+        <div class="bt_box">
+            <div class="col-xs-6 col-sm-6">
+                <input type="file" name="file0" id="file0" accept="image/*" />
+            </div>
+            <div class="col-xs-2 col-sm-2"></div>
+            <div class="col-xs-4 col-sm-4" id="bc">
+                <button>保存头像</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script>
+        $('#bs-example-navbar-collapse-1 ul li').click(function () {
+            $(this).toggleClass('active').siblings().removeClass('active')
+        })
+
+        $(function () {
+            $('#add_host').click(function () {
+                $('.shade, .add-model').removeClass('hide');
+            });
+            $("#close").click(function () {
+                $('.shade, .add-model').addClass('hide');
+            })
+            $("#bc").click(function () {
+                $('.shade, .add-model').addClass('hide');
+                $
+            })
+        });
+
+        var $t_img = document.getElementById('t_img');
+        var $img = $t_img.getElementsByTagName('img');
+        var index = 0;
+        for (var i = 0; i < $img.length; i++) {
+            $img[i].index = i;
+            $img[i].onclick = function () {
+                $img[index].style.borderRadius = "15%";
+                $img[index].style.border = "none"
+                this.style.borderRadius = "50%";
+                this.style.border = "1px solid red"
+                index = this.index;
+                var $newsrc = $img[index].src;
+                $(".t_img").attr('src', $newsrc);
+            }
+        }
+        //点击确认修改按钮更换头像
+        $("#but").click(function () {
+            $("#sbox").hide("slow");
+        })
+
+        //讲选中的图片替换头像的图片
+        $("#file0").change(function () {
+            var objUrl = getObjectURL(this.files[0]);
+            if (objUrl) {
+                $(".t_img").attr("src", objUrl);
+            }
+        });
+        //创建一个可存取到该file的url  
+        function getObjectURL(file) {
+            var url = null;
+            // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+            if (window.createObjectURL != undefined) { // basic  
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)  
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome  
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }  
+    </script>
+</body>
+
+</html>

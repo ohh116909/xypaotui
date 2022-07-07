@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生失物招领页面</title>
+  <link rel="stylesheet" href="/bootstrap-3.4.1-dist/css/bootstrap.css">
+  <style>
+    ul,
+    li {
+      list-style: none;
+    }
+    .container-fluid{
+      margin-top: 20px;
+     
+    }
+    .container-fluid p {
+      font-size: 20px;
+    }
+    .thumbnail{
+      background-color:#fff;
+    }
+    body{
+      background-color: #F5F6FF;
+    }
+  </style>
+</head>
+<body >
+  <div class="container-fluid">
+    <!-- 搜索栏 -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-3">
+        <p>全部订单</p>
+      </div>
+      <div class="col-xs-6 col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">搜索</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-2"></div>
+      <div class="col-xs-6 col-md-2">
+        <select class="form-control">
+          <option>全部</option>
+          <option>最近三天</option>
+          <option>最近一周</option>
+          <option>最近一个月</option>
+          <option>最近三个月</option>
+          <option>最近半年</option>
+        </select>
+      </div>
+    </div>
+    <!-- 物品展示 -->
+    <div class="row" style=" padding-top: 10px; padding-left: 0px;padding-right: 10px;">
+      
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <!-- <img src="./images/logo.png" alt="..."> -->
+            <div class="caption">
+              <h3>拾到一部手机</h3>
+              <li>物品描述:<span>一部苹果手机</span></li>
+              <li>发现地点:<span>东一门妈妈快递</span></li>
+              <li>发现时间:<span>2022.04.22 12.00</span></li>
+              <li>发布时间:<span>2022.04.22 12.00</span></li>
+              <li>状态:<span>已归还/未找到失主</span></li>
+              <a href="#" class="btn btn-default" role="button">查看详情</a> 
+              <a href="#" class="btn btn-success" role="button" style="float: right;">接单</a>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+            
+
+  <script src="/js/jquery-3.6.0.js"></script>
+  <script src="/bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+</body>
+
+</html>

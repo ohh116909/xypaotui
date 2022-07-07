@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.xypaotui.dao.MationForDao">
+    <insert id="save" parameterType="Take">
+        insert  into t_take
+        values
+        (#{forId},#{forName},#{forAdress},#{forOverTime},#{forMoney},#{forQQ},#{forWx},#{forPhone},#{forCode},#{forIdname},#{forAbout},#{forBeginTime},#{forGetAdress})
+    </insert>
+    <resultMap id="TakeMap" type="com.zhang.xypaotui.pojo.Take">
+        <id column="for_id" property="forId"></id>
+        <result column="for_name" property="forName"/>
+        <result column="for_adress" property="forAdress"/>
+        <result column="for_overTime" property="forOverTime"/>
+        <result column="for_money" property="forMoney"/>
+        <result column="for_qq" property="forQQ"/>
+        <result column="for_wx" property="forWx"/>
+        <result column="for_phone" property="forPhone"/>
+        <result column="for_code" property="forCode"/>
+        <result column="for_idname" property="forIdname"/>
+        <result column="for_about" property="forAbout"/>
+        <result column="for_beginTime" property="forBeginTime"/>
+        <result column="for_getAdress" property="forGetAdress"/>
+    </resultMap>
+    <select id="getAll" resultMap="TakeMap">
+        select * from t_take
+    </select>
+</mapper>

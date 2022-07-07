@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>注册页面</title>
+<!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+<meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<style>
+  p{
+    font-size: 12px;
+    display:inline-block
+  }
+</style>
+<link id="theme-style" rel="stylesheet" href="/css/portal.css">
+</head>
+<body class="app app-signup p-0">
+<div class="row g-0 app-auth-wrapper">
+  <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5" style="margin: 0 auto;">
+    <div class="d-flex flex-column align-content-end">
+      <div class="app-auth-body mx-auto">
+        <h2 class="auth-heading text-center mb-4">注册</h2>
+        <div class="auth-form-container text-left mx-auto">
+          <form class="auth-form auth-signup-form" method="post" action="/user/register">
+            <div class="email mb-3">
+              <p>用户名</p> <p id="uname"></p>
+              <input id="username" name="username" type="text" class="form-control signup-name" placeholder="User Name" required="required">
+            </div>
+            <div class="email mb-3">
+              <p>手机号</p> <p id="ph"></p>
+              <input id="phone" name="telephone" type="text" class="form-control signup-email" placeholder="Phone" required="required">
+            </div>
+            <div class="password mb-3">
+              <p>密码</p> <p id="pwd"></p>
+              <input id="password" name="password" type="password" class="form-control signup-password" placeholder="password" required="required">
+            </div>
+            <div class="password mb-3">
+              <p>验证码</p> <p id="yzm"></p>
+              <input id="vpwd" name="sendcode" type="text" class="form-control signup-password"  placeholder="输入验证码" required="required">
+            </div>
+            <div class="extra mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="RememberPassword">
+                <label class="form-check-label" for="RememberPassword">我同意 <a href="#" class="app-link">服务条款</a>和<a href="#" class="app-link">隐私政策 </a> </label>
+              </div>
+            </div>
+            <!--//extra-->
+            <div class="text-center">
+              <input type="button"  id="sendBtn" class="btn app-btn-primary btn-block theme-btn mx-auto" onclick="sendCodes(this)" value="获取验证码">
+              <button id="submits" type="submit" class="btn app-btn-primary btn-block theme-btn mx-auto">注册</button>
+            </div>
+          </form>
+          <!--//auth-form-->
+          <div class="auth-option text-center pt-5" style="margin-top: -20px;">已有一个账户？<a class="text-link" href="./login.html">去登录</a></div>
+        </div>
+        <!--//auth-form-container--></div>
+       
+      <!--//app-auth-footer--></div>
+      
+    <!--//flex-column--></div>
+    
+  <!--//auth-main-col--></div>
+  </body>
+  
+<!--//row-->
+<script src="/js/jquery-3.6.0.js"></script>
+<script>
+// 校验用户名
+        // 单词字符，长度8到20位
+        function checkUsername() {
+            // 1.获取用户名值
+            var username = $("#username").val();
+            // 2.定义校验正则
+            var reg_username = /^\w{8,20}$/;
+            // 3.判断是否满足校验要求，并给出提示信息
+            var flag = reg_username.test(username);
+            if (flag) {
+                // 用户名合法
+                $("#uname").html('')
+            } else {
+                // 用户名非法，加一个红色边框
+                $("#uname").html('用户名为任意字母数字下划线或. 长度为8-20').css('color', 'red');
+            }
+            // 4.返回是否通过校验
+            return flag;
+        }
+
+        // 校验密码
+        function checkPassword() {
+            //1.获取密码值
+            var password = $("#password").val();
+            //2.定义正则
+            var reg_password = /^\w{6,20}$/;
+            //3.判断，给出提示信息
+            var flag = reg_password.test(password);
+            if (flag) {
+                //密码合法
+                $("#pwd").html('')
+            } else {
+                //密码非法,加一个红色边框
+                $("#pwd").html('密码为任意字母数字下划线或. 长度为8-20').css('color', 'red');
+            }
+            // 4.返回校验是否通过
+            return flag;
+        }
+        // 校验手机号
+        function checkTelePhone() {
+            //1.获取密码值
+            var phone = $("#phone").val();
+            //2.定义正则
+            var reg_phone = /^1(3|4|5|6|7|8|9)\d{9}$/;
+            //3.判断，给出提示信息
+            var flag = reg_phone.test(phone);
+            if (flag) {
+                //密码合法
+                $("#ph").html('')
+            } else {
+                //密码非法,加一个红色边框
+                $("#ph").html('手机号为1开头11位数字组成').css('color', 'red');
+            }
+            // 4.返回校验是否通过
+            return flag;
+        }
+        //发送验证码
+    function sendCodes(){
+        var phone = $('#phone').val();
+        console.log(phone);
+        if (phone==""||phone.length!=11){
+          $('#yzm').html( "手机号错误").css('color', 'red');;
+          return ;
+        }else{
+          $.ajax({
+            type: 'GET',
+            url: '/utils/sendcode',
+            data:{
+              phone : phone
+            },
+            success: function () {
+              timer();
+            },
+            error: function (data) {
+              $('#yzm').html( "请求超时").css('color', 'red');
+            }
+          })
+        }
+      }
+
+      var wait = 60;
+      function timer() {
+        if(wait == 0){
+          $("#sendBtn,#send").val("获取验证码");
+          $("#sendBtn,#send").removeAttr("disabled");
+          $("#sendBtn,#send").css("border-color","1e9fff").css("background", "#ffffff").css("cursor", "pointer");
+          wait = 60;
+        }else {
+          $("#sendBtn,#send").attr("disabled", "true");
+          $("#sendBtn,#send").css("border-color", "fbfbfb").css("background", "#ccc").css("cursor", "not-allowed");
+          $("#sendBtn,#send").val(wait + "秒后重发");
+          wait--;
+          setTimeout(function () {
+            timer()
+          }, 1000);
+        }
+      }
+              //提交表单
+        $('#submits').click = function (){
+          $.ajax({
+            url: '/user/register',
+            type: 'post',
+            data: {
+              "username":$('#username').val(),
+              "telephone":$('#phone').val(),
+              "password":$('#password').val()
+            },
+            success:function (){
+            },
+            error:function (data){
+              $("#uname").html('注册失败'+data).css('color', 'red');
+            }
+          })
+        }
+
+
+        $("#username").blur(checkUsername);
+        $("#password").blur(checkPassword);
+        $("#phone").blur(checkTelePhone);
+        
+
+
+        
+</script>
+</body>
+</html>
